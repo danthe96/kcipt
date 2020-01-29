@@ -12,7 +12,7 @@ function P = linear_permutation(D)
 
     % Equality constraints
     Aeq = sparse(2*n, n^2);
-    b = ones(2*n, 1);
+    beq = ones(2*n, 1);
 
     % Columns sum to 1
     for c = [0:n-1]
@@ -31,12 +31,13 @@ function P = linear_permutation(D)
     for z = [1:n]
         Aeq(2*n, (z-1)*(n+1) + 1) = 1;
     end
-    b(2*n, 1) = 0;
+    beq(2*n, 1) = 0;
 
     % We use the simplex algorithm since we need a vertex solution
     % (so that the resulting matrix is a permutation)
-    %options = optimset('LargeScale', 'off', 'Simplex', 'on', 'Display', 'iter');
-    options = optimset('LargeScale', 'off', 'Simplex', 'on');
-    vecPstar = linprog(f, [], [], Aeq, b, lb, [], [], options);
+    %options = optimset('Algorithm', 'dual-simplex', 'Display', 'iter');
+    options = optimset('Algorithm', 'dual-simplex', 'Display', 'off');
+
+    vecPstar = linprog(f, [], [], Aeq, beq, lb, [], options);
     P = reshape(vecPstar, n, n);
 end

@@ -43,6 +43,7 @@ function [statistic null] = kcipt(X, Y, Z, k_X, k_Y, k_Z, options)
         Z1 = Z; Z2 = Z;
     end
 
+    disp(options.distance);
     % Compute distance
     if strcmp(options.distance, 'regression')
         D = regression_distance(Y1, Z1);
@@ -67,6 +68,7 @@ function [statistic null] = kcipt(X, Y, Z, k_X, k_Y, k_Z, options)
     end
     Y1_0 = Y1;
     Y1 = P'*Y1;
+    disp(P);
 
     % Compute statistic
     if strcmp(options.kernel, 'supplied')

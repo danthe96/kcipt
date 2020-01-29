@@ -1,7 +1,7 @@
 #!/bin/bash
 KCITURL=http://people.tuebingen.mpg.de/kzhang/KCI-test.zip
 KCITZIPFILE=KCI-test.zip
-BNTURL=https://bnt.googlecode.com/files/FullBNT-1.0.7.zip
+BNTURL=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bnt/FullBNT-1.0.7.zip
 BNTZIPFILE=FullBNT-1.0.7.zip
 
 wget $KCITURL -O $KCITZIPFILE

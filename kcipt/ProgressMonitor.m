@@ -24,7 +24,7 @@ classdef ProgressMonitor < handle
             obj.progress = 0;
             obj.pending = 0;
             obj.msg = msg;
-            obj.print_progress();
+            % obj.print_progress();
         end
 
         function increment(obj, amount)
@@ -35,7 +35,7 @@ classdef ProgressMonitor < handle
             if ((100*obj.pending/obj.total) >= obj.print_interval)
                 obj.progress = obj.progress + obj.pending;
                 obj.pending = 0;
-                obj.print_progress();
+                % obj.print_progress();
             end
         end
 
